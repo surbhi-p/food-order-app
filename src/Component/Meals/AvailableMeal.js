@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = () => {
-    const MealList = DUUMY_MEALS.map(item => <MealItem key={item.id} name={item.name} desc={item.description} price={item.price}/>)
+    const MealList = DUUMY_MEALS.map(item => <MealItem key={item.id} id={item.id} name={item.name} desc={item.description} price={item.price}/>)
     return <section className= {classes.meals}>
             <Card>
                 <ul>

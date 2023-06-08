@@ -1,26 +1,25 @@
-import { Fragment } from "react";
+import { useState } from "react";
 import Header from "./Component/Layout/Header";
 import Meals from "./Component/Meals/Meals"
 import { Cart } from "./Component/Cart/Cart";
-
-// const [cartIsShow, setCartIsShow] = useState(false);
-
-// const showCartHandler = () => {
-//   setCartIsShow(true);
-// }
-
-const hideCartHandler = () => {
-  console.log("close modal")
-  // setCartIsShow(false);
-}
+import CartProvider from "./Component/Store/CartProvidder";
 
 function App() {
+  const [cartIsShow, setCartIsShow] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShow(true);
+  }
+
+  const hideCartHandler = () => {
+    setCartIsShow(false);
+  }
   return (
-    <Fragment>
-      <Cart onClose={hideCartHandler} />
-      <Header/>
+    <CartProvider>
+      {cartIsShow && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler}/>
       <Meals />
-    </Fragment>
+    </CartProvider>
   );
 }
 
